@@ -24,16 +24,18 @@ dependencies {
     mappings(loom.officialMojangMappings())
     neoForge("net.neoforged:neoforge:${property("neoforge_version")}")
 
-//    modImplementation("dev.architectury:architectury-neoforge:${property("architectury_api_version")}")
-
     implementation(project(":common", configuration = "namedElements"))
     "developmentNeoForge"(project(":common", configuration = "namedElements")) {
         isTransitive = false
     }
     shadowBundle(project(":common", configuration = "transformProductionFabric"))
 
-
+    // Development QOL
     modLocalRuntime("curse.maven:configured-457570:7076243")
+    modLocalRuntime("mezz.jei:jei-${property("minecraft_version")}-neoforge:${property("jei_version")}") { isTransitive = false }
+
+//    modImplementation("dev.architectury:architectury-neoforge:${property("architectury_api_version")}")
+//    modCompileOnly("mezz.jei:jei-${property("minecraft_version")}:${property("jei_version")}:api")
 }
 
 tasks.processResources {

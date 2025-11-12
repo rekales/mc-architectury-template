@@ -10,12 +10,12 @@ import net.neoforged.fml.config.ModConfig;
 import static com.kreidev.templatemod.TemplateMod.MOD_ID;
 
 @Mod(MOD_ID)
-public final class CraftingCooldownNeoForge {
+public final class TemplateModNeoForge {
 
-    public CraftingCooldownNeoForge(IEventBus modEventBus, ModContainer modContainer) {
-        modContainer.registerConfig(ModConfig.Type.COMMON, NeoForgeCommonConfig.SPEC);
+    public TemplateModNeoForge(IEventBus modEventBus, ModContainer modContainer) {
+        modContainer.registerConfig(ModConfig.Type.COMMON, CommonConfigNeoForge.SPEC);
         TemplateMod.init();
-        modEventBus.addListener(NeoForgeCommonConfig::onLoad);
-        modEventBus.addListener(NeoForgeCommonConfig::onReload);
+        modEventBus.addListener(CommonConfigNeoForge::onLoad);
+        modEventBus.addListener(CommonConfigNeoForge::onReload);
     }
 }

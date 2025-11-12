@@ -11,4 +11,5 @@ dependencies {
     minecraft("com.mojang:minecraft:${property("minecraft_version")}")
     mappings(loom.officialMojangMappings())
 //    modImplementation("dev.architectury:architectury:${property("architectury_api_version")}")
+//    modCompileOnly("mezz.jei:jei-$minecraft_version-common:$jei_version")
 }

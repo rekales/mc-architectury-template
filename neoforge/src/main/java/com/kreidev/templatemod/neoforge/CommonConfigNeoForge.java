@@ -3,7 +3,7 @@ package com.kreidev.templatemod.neoforge;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-public class NeoForgeCommonConfig {
+public class CommonConfigNeoForge {
 
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 

@@ -26,15 +26,19 @@ dependencies {
 
     modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_api_version")}")
     modImplementation(fabricApi.module("fabric-command-api-v2", property("fabric_api_version").toString()))
-//    modImplementation("dev.architectury:architectury-fabric:${property("architectury_api_version")}")
 
     implementation(project(":common", configuration = "namedElements"))
     "developmentFabric"(project(":common", configuration = "namedElements"))
     shadowCommon(project(":common", configuration = "transformProductionFabric"))
 
-
+    // Development QOL
     modLocalRuntime("curse.maven:modmenu-308702:5810603")
+    modLocalRuntime("mezz.jei:jei-${property("minecraft_version")}-fabric:${property("jei_version")}")
+
     modImplementation(include("maven.modrinth:midnightlib:${property("midnightlib_version")}")!!)
+
+//    modImplementation("dev.architectury:architectury-fabric:${property("architectury_api_version")}")
+//    modCompileOnly("mezz.jei:jei-$minecraft_version-fabric:$jei_version")
 }
 
 tasks.processResources {

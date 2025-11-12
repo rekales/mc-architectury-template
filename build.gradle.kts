@@ -17,6 +17,7 @@ allprojects {
         maven("https://www.cursemaven.com")
         maven("https://api.modrinth.com/maven")
         maven("https://maven.neoforged.net/releases")
+        maven ("https://maven.blamejared.com") // JEI
     }
 
     java {
