@@ -14,10 +14,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "${entry_point_main}"
+      "com.kreidev.templatemod.fabric.TemplateModFabric"
     ],
     "client": [
-      "${entry_point_client}"
+      "com.kreidev.templatemod.fabric.client.TemplateModFabricClient"
     ]
   },
   "mixins": [
