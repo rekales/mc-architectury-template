@@ -1,0 +1,66 @@
+plugins {
+    id("dev.architectury.loom")
+    id("architectury-plugin")
+    id("com.github.johnrengelman.shadow") version "8.1.1"
+}
+
+architectury {
+    platformSetupLoomIde()
+    fabric()
+}
+
+loom {
+    enableTransitiveAccessWideners.set(true)
+    silentMojangMappingsLicense()
+
+    mixin {
+        defaultRefmapName.set("mixins.${property("mod_id")}.refmap.json")
+    }
+}
+val shadowCommon = configurations.create("shadowCommon")
+
+dependencies {
+    minecraft("com.mojang:minecraft:${property("minecraft_version")}")
+    mappings(loom.officialMojangMappings())
+    modImplementation("net.fabricmc:fabric-loader:${property("fabric_loader_version")}")
+
+    modImplementation("net.fabricmc.fabric-api:fabric-api:${property("fabric_api_version")}")
+    modImplementation(fabricApi.module("fabric-command-api-v2", property("fabric_api_version").toString()))
+//    modImplementation("dev.architectury:architectury-fabric:${property("architectury_api_version")}")
+
+    implementation(project(":common", configuration = "namedElements"))
+    "developmentFabric"(project(":common", configuration = "namedElements"))
+    shadowCommon(project(":common", configuration = "transformProductionFabric"))
+
+
+    modLocalRuntime("curse.maven:modmenu-308702:5810603")
+    modImplementation(include("maven.modrinth:midnightlib:${property("midnightlib_version")}")!!)
+}
+
+tasks.processResources {
+    inputs.property("version", project.version)
+
+    filesMatching("fabric.mod.json") {
+        expand(project.properties)
+    }
+}
+
+tasks {
+    jar {
+        archiveBaseName.set("${rootProject.property("mod_id")}-${project.name}")
+        archiveClassifier.set("dev-slim")
+    }
+
+    shadowJar {
+        archiveClassifier.set("dev-shadow")
+        archiveBaseName.set("${rootProject.property("mod_id")}-${project.name}")
+        configurations = listOf(shadowCommon)
+    }
+
+    remapJar {
+        dependsOn(shadowJar)
+        inputFile.set(shadowJar.flatMap { it.archiveFile })
+        archiveBaseName.set("${rootProject.property("mod_id")}-${project.name}")
+        archiveVersion.set("${rootProject.version}")
+    }
+}
