@@ -17,7 +17,13 @@ allprojects {
         maven("https://www.cursemaven.com")
         maven("https://api.modrinth.com/maven")
         maven("https://maven.neoforged.net/releases")
-        maven ("https://maven.blamejared.com") // JEI
+        maven("https://modmaven.dev")
+        maven("https://maven.blamejared.com")  // JEI
+        maven("https://raw.githubusercontent.com/Fuzss/modresources/main/maven")  // NeoForge config api port, needed by ponder
+        maven("https://maven.ftb.dev/releases")   // FTB Mods
+        maven("https://mvn.devos.one/snapshots")  // Registrate
+        maven("https://maven.createmod.net")  // Ponder, Flywheel
+        maven("https://maven.squiddev.cc")  // CC: Tweaked
     }
 
     java {

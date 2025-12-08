@@ -25,5 +25,12 @@ versionRange = "[1.21.1,)"
 ordering = "NONE"
 side = "BOTH"
 
+[[dependencies.${mod_id}]]
+modId="create"
+mandatory=true
+versionRange="[6.0.0,)"
+ordering="NONE"
+side="BOTH"
+
 [[mixins]]
 config = "${mod_id}.mixins.json"

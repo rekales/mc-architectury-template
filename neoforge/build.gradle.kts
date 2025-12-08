@@ -34,6 +34,13 @@ dependencies {
     modLocalRuntime("curse.maven:configured-457570:7076243")
     modLocalRuntime("mezz.jei:jei-${property("minecraft_version")}-neoforge:${property("jei_version")}") { isTransitive = false }
 
+    modImplementation("com.simibubi.create:create-${property("minecraft_version")}:${property("create_version")}:slim")
+    modImplementation("net.createmod.ponder:Ponder-NeoForge-${property("minecraft_version")}:${property("ponder_version")}")
+    modCompileOnly("dev.engine-room.flywheel:flywheel-neoforge-api-${property("minecraft_version")}:${property("flywheel_version")}")
+    modRuntimeOnly("dev.engine-room.flywheel:flywheel-neoforge-${property("minecraft_version")}:${property("flywheel_version")}")
+    modImplementation("com.tterrag.registrate:Registrate:${property("registrate_version")}")
+    modRuntimeOnly("mysticdrew:common-networking-neoforge:${property("common_networking_version")}-${property("minecraft_version")}")
+
 //    modImplementation("dev.architectury:architectury-neoforge:${property("architectury_api_version")}")
 //    modCompileOnly("mezz.jei:jei-${property("minecraft_version")}:${property("jei_version")}:api")
 }
