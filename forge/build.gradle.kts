@@ -25,10 +25,9 @@ dependencies {
     forge("net.minecraftforge:forge:${property("forge_version")}")
 
     implementation(project(":common", configuration = "namedElements"))
-//    "developmentNeoForge"(project(":common", configuration = "namedElements")) {
-//        isTransitive = false
-//    }
-//    shadowBundle(project(":common", configuration = "transformProductionForge"))
+    "developmentForge"(project(":common", configuration = "namedElements")) {
+        isTransitive = false
+    }
 
     // Development QOL
 //    modLocalRuntime("curse.maven:configured-457570:7076243")
@@ -41,7 +40,6 @@ dependencies {
     modImplementation("com.tterrag.registrate:Registrate:${property("registrate_version")}")
     implementation("io.github.llamalad7:mixinextras-forge:0.4.1")
     annotationProcessor("org.spongepowered:mixin:0.8.5:processor")
-//    modRuntimeOnly("mysticdrew:common-networking-neoforge:${property("common_networking_version")}-${property("minecraft_version")}")
 
 //    modImplementation("dev.architectury:architectury-neoforge:${property("architectury_api_version")}")
 //    modCompileOnly("mezz.jei:jei-${property("minecraft_version")}:${property("jei_version")}:api")
