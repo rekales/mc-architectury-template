@@ -11,6 +11,6 @@ rootProject.name = "templatemod"
 
 listOf(
     "common",
-    "neoforge",
+    "forge",
     "fabric"
 ).forEach { include(it)}

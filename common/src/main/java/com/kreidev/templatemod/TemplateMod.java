@@ -14,6 +14,7 @@ public final class TemplateMod {
     }
 
     public static ResourceLocation resLoc(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+        return new ResourceLocation(MOD_ID, path);
+//        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
 }

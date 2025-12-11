@@ -6,7 +6,7 @@ plugins {
 
 architectury {
     platformSetupLoomIde()
-    neoForge()
+    forge()
 }
 
 loom {
@@ -22,24 +22,26 @@ val shadowBundle = configurations.create("shadowBundle") {
 dependencies {
     minecraft("net.minecraft:minecraft:${property("minecraft_version")}")
     mappings(loom.officialMojangMappings())
-    neoForge("net.neoforged:neoforge:${property("neoforge_version")}")
+    forge("net.minecraftforge:forge:${property("forge_version")}")
 
     implementation(project(":common", configuration = "namedElements"))
-    "developmentNeoForge"(project(":common", configuration = "namedElements")) {
-        isTransitive = false
-    }
-    shadowBundle(project(":common", configuration = "transformProductionNeoForge"))
+//    "developmentNeoForge"(project(":common", configuration = "namedElements")) {
+//        isTransitive = false
+//    }
+//    shadowBundle(project(":common", configuration = "transformProductionForge"))
 
     // Development QOL
-    modLocalRuntime("curse.maven:configured-457570:7076243")
-    modLocalRuntime("mezz.jei:jei-${property("minecraft_version")}-neoforge:${property("jei_version")}") { isTransitive = false }
+//    modLocalRuntime("curse.maven:configured-457570:7076243")
+//    modLocalRuntime("mezz.jei:jei-${property("minecraft_version")}-neoforge:${property("jei_version")}") { isTransitive = false }
 
     modImplementation("com.simibubi.create:create-${property("minecraft_version")}:${property("create_version")}:slim")
-    modImplementation("net.createmod.ponder:Ponder-NeoForge-${property("minecraft_version")}:${property("ponder_version")}")
-    modCompileOnly("dev.engine-room.flywheel:flywheel-neoforge-api-${property("minecraft_version")}:${property("flywheel_version")}")
-    modRuntimeOnly("dev.engine-room.flywheel:flywheel-neoforge-${property("minecraft_version")}:${property("flywheel_version")}")
+    modImplementation("net.createmod.ponder:Ponder-Forge-${property("minecraft_version")}:${property("ponder_version")}")
+    modCompileOnly("dev.engine-room.flywheel:flywheel-forge-api-${property("minecraft_version")}:${property("flywheel_version")}")
+    modRuntimeOnly("dev.engine-room.flywheel:flywheel-forge-${property("minecraft_version")}:${property("flywheel_version")}")
     modImplementation("com.tterrag.registrate:Registrate:${property("registrate_version")}")
-    modRuntimeOnly("mysticdrew:common-networking-neoforge:${property("common_networking_version")}-${property("minecraft_version")}")
+    implementation("io.github.llamalad7:mixinextras-forge:0.4.1")
+    annotationProcessor("org.spongepowered:mixin:0.8.5:processor")
+//    modRuntimeOnly("mysticdrew:common-networking-neoforge:${property("common_networking_version")}-${property("minecraft_version")}")
 
 //    modImplementation("dev.architectury:architectury-neoforge:${property("architectury_api_version")}")
 //    modCompileOnly("mezz.jei:jei-${property("minecraft_version")}:${property("jei_version")}:api")
@@ -48,7 +50,7 @@ dependencies {
 tasks.processResources {
     inputs.property("version", project.version)
 
-    filesMatching("META-INF/neoforge.mods.toml") {
+    filesMatching("META-INF/mods.toml") {
         expand(project.properties)
     }
 }
